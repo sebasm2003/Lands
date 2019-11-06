@@ -6,97 +6,111 @@
              mc:Ignorable="d"
              x:Class="Lands.Views.LoginPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Login">
+             Title="Lands">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView
+            BindingContext="{Binding Login}"
+            BackgroundColor="White">
             <StackLayout
-                Padding="10,20,10,5">
-            <Label 
-                FontAttributes="Bold"
-                FontSize="Large"
-                HorizontalOptions="Center"
-                Text="Lands"                 
-                 />
-            <Image
-                WidthRequest="200"
-                Source="onu2"></Image>
-            <Grid
-                Margin="0,20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Label 
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    FontAttributes="Bold"
-                    FontSize="Large"                
-                    Text="Emai"                 
-                 />
-                <Entry
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Keyboard="Email"
-                    Placeholder="Enter your email">
-                </Entry>
-                <Label 
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    FontAttributes="Bold"
-                    FontSize="Large"                
-                    Text="Password"                 
-                 />
-                <Entry 
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    IsPassword="True"
-                    Placeholder="Enter your password">
-                </Entry>
-            </Grid>
-            <StackLayout
-                Orientation="Horizontal">
-                
+                Padding="5">
+                <Image
+                    WidthRequest="200"
+                    Source="onu2"></Image>
+                <Grid
+                    Margin="10,0"
+                    VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label 
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        FontSize="Large"                
+                        Text="Email" 
+                        VerticalOptions="Center"
+                     />
+                    <Entry
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Keyboard="Email"
+                        Placeholder="Enter your email"
+                        Text="{Binding Email, Mode=TwoWay}">
+                    </Entry>
+                    <Label 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        FontSize="Large"                
+                        Text="Password" 
+                        VerticalOptions="Center"
+                     />
+                    <Entry 
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        IsPassword="True"
+                        Placeholder="Enter your password"
+                        Text="{Binding Password, Mode=TwoWay}">
+                    </Entry>
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand"></ActivityIndicator>
+                <StackLayout
+                    VerticalOptions="CenterAndExpand"
+                    Margin="10,0"
+                    Orientation="Horizontal">
+                    <Label
+                        HorizontalOptions="StartAndExpand"
+                        Text="Remember me on this device"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Switch 
+                        IsToggled="{Binding IsRemembered, Mode=TwoWay}"
+                        HorizontalOptions="End"></Switch>
+                </StackLayout>
                 <Label
-                    HorizontalOptions="StartAndExpand"
-                    Text="Remember me in this device"
-                    VerticalOptions="Center">
-                    
+                    Text="Forgot your password?"
+                    HorizontalOptions="Center"
+                    TextColor="Blue"
+                    VerticalOptions="CenterAndExpand">
                 </Label>
-                <Switch 
-                    HorizontalOptions="End"></Switch>
+                <StackLayout
+                    Orientation="Horizontal"
+                    Margin="40,0"
+                    VerticalOptions="CenterAndExpand">
+                    <Button
+                        BackgroundColor="Navy"
+                        BorderRadius="23"
+                        Command="{Binding LoginCommand}"
+                        HorizontalOptions="FillAndExpand"
+                        HeightRequest="46"
+                        TextColor="White"                        
+                        Text="Login"
+                        >
+                    </Button>
+                    <Button
+                        BackgroundColor="Purple"
+                        BorderRadius="23"
+                        HeightRequest="46"
+                        TextColor="White"
+                        HorizontalOptions="FillAndExpand"
+                        Text="Register">
+                    </Button>
+                </StackLayout>
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    VerticalOptions="EndAndExpand">
+                    <Image 
+                        WidthRequest="100"
+                        Source="facebook_logo"></Image>
+                    <Image 
+                        WidthRequest="57"
+                        Source="twitter_logo2"></Image>
+                </StackLayout>
             </StackLayout>
-            
-            <ActivityIndicator></ActivityIndicator>
-            <StackLayout
-                Margin="40,0">
-                <Button
-                    BackgroundColor="Navy"
-                    BorderRadius="23"
-                    HeightRequest="46"
-                    TextColor="White"
-                    Text="Login">
-
-                </Button>
-                <Button
-                    BackgroundColor="Purple"
-                    BorderRadius="23"
-                    HeightRequest="46"
-                    TextColor="White"
-                    Text="Register">
-
-                </Button>
-            </StackLayout>
-            <StackLayout
-                HorizontalOptions="Center"
-                Orientation="Horizontal">
-                <Image 
-                    WidthRequest="100"
-                    Source="facebook_logo"></Image>
-                <Image 
-                    WidthRequest="57"
-                    Source="twitter_logo2"></Image>
-            </StackLayout>
-        </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
