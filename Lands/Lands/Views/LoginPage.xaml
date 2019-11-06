@@ -86,6 +86,7 @@
                         Command="{Binding LoginCommand}"
                         HorizontalOptions="FillAndExpand"
                         HeightRequest="46"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                         TextColor="White"                        
                         Text="Login"
                         >
@@ -94,8 +95,9 @@
                         BackgroundColor="Purple"
                         BorderRadius="23"
                         HeightRequest="46"
-                        TextColor="White"
                         HorizontalOptions="FillAndExpand"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                        TextColor="White"                        
                         Text="Register">
                     </Button>
                 </StackLayout>
