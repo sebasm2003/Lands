@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="Lands.Views.LoginPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Lands">
+             Title="Login">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Login}"

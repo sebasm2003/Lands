@@ -8,7 +8,7 @@
 
         public InstanceLocator()
         {
-            this.Main = new MainViewModel();
+            this.Main = MainViewModel.GetInstance();
         }
     }
 }
