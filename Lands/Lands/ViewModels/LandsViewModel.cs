@@ -22,7 +22,7 @@
         #region Attributes
      
         private ObservableCollection<LandItemViewModel> _lands;
-        private List<Land> _landsList;
+     
         private string _filter;
 
         private bool _isRefreshing;
@@ -96,7 +96,7 @@
                     "Accept");
             }
 
-            this._landsList = (List<Land>)response.Result;
+            MainViewModel.GetInstance().LandList = (List<Land>)response.Result;
             this.Lands = new ObservableCollection<LandItemViewModel>(this.ToLandItemViewModel());
             this.IsRefreshing = false;           
 
@@ -145,7 +145,7 @@
 
         private IEnumerable<LandItemViewModel> ToLandItemViewModel()
         {
-            return this._landsList.Select(x => new LandItemViewModel
+            return MainViewModel.GetInstance().LandList.Select(x => new LandItemViewModel
             {
                 Alpha2Code = x.Alpha2Code,
                 Alpha3Code = x.Alpha3Code,
