@@ -4,10 +4,19 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="Lands.Views.LandPage"
              IconImageSource="ic_action_info"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"             
              Title="Information">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ffimageloadingsvg:SvgImageSourceConverter 
+                x:Key="SvgImageSourceConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Land}">
@@ -19,6 +28,9 @@
                     HorizontalOptions="Center"
                     Text="{Binding Land.Name}"
                     TextColor="Black"></Label>
+                <ffimageloading:CachedImage 
+                    Source="{Binding Land.Flag, Converter={StaticResource SvgImageSourceConverter}}">
+                </ffimageloading:CachedImage>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -184,6 +196,6 @@
 
             </StackLayout>
         </ScrollView>
-       
+
     </ContentPage.Content>
 </ContentPage>
