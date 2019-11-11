@@ -11,9 +11,9 @@
 
         #region Constructors
 
-        private MainViewModel()
+        public MainViewModel()
         {
-            //_instance = this;
+            _instance = this;
             this.Login = new LoginViewModel();
         }
 

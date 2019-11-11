@@ -148,4 +148,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\twitter_logo2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_chevron_right.png" />
+  </ItemGroup>
 </Project>

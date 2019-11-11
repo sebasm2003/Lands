@@ -20,8 +20,7 @@
 
         #region Properties
 
-
-
+        
         public string Email
         {
             get { return this._email; }
@@ -103,14 +102,17 @@
                 return;
             }
 
+           
+
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Lands = new LandsViewModel(); 
+            await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
+
             this.IsRunning = false;
             this.IsEnabled = true;
 
             this.Email = string.Empty;
             this.Password = string.Empty;
-
-            MainViewModel.GetInstance().Lands = new LandsViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
         }
 
         #endregion

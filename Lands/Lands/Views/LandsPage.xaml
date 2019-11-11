@@ -6,14 +6,69 @@
              mc:Ignorable="d"
              x:Class="Lands.Views.LandsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             BackgroundColor="Silver"
              Title="Lands">
     <ContentPage.Content>
-        <StackLayout
-            Padding="5"
+        <StackLayout        
             BindingContext="{Binding Lands}">
-            <Label Text="Welcome to Lands Page!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <SearchBar
+                BackgroundColor="Silver"
+                Text="{Binding Filter,Mode=TwoWay}"
+                SearchCommand="{Binding SearchCommand}">
+
+            </SearchBar>
+            <ListView
+                BackgroundColor="Silver"
+                HasUnevenRows="True"          
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"                
+                ItemsSource="{Binding Lands}"
+                RefreshCommand="{Binding RefreshCommand}"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                CornerRadius="20"
+                                HasShadow="True"
+                                Margin="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout
+                                        Grid.Column="0"
+                                        VerticalOptions="Center">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{Binding Name}"
+                                            TextColor="Black"></Label>
+                                        <Label
+                                            Text="{Binding Capital}"
+                                            TextColor="Black"></Label>
+                                    </StackLayout>
+                                    <Image
+                                        Grid.Column="1"
+                                        HorizontalOptions="End"
+                                        Source="ic_chevron_right"></Image>
+                                </Grid>
+                            </Frame>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
         </StackLayout>
+
+        <!--<StackLayout Margin="20,35,20,20" BindingContext="{Binding Lands}">
+            <ListView ItemsSource="{Binding Monkeys}">
+                
+
+
+            </ListView>
+        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>
