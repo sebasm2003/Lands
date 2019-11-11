@@ -45,6 +45,18 @@
 
         private async void LoadLands()
         {
+            var connection = await this._apiService.CheckConnection();
+
+            if (!connection.IsSuccess)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                   "Error",
+                   connection.Message,
+                   "Accept");
+
+                await Application.Current.MainPage.Navigation.PopAsync();
+            }
+
             var response = await this._apiService.GetList<Land>(
                 "http://restcountries.eu",
                 "/rest",
