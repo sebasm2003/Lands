@@ -13,11 +13,12 @@
             BindingContext="{Binding Lands}">
             <SearchBar
                 BackgroundColor="Silver"
+                Placeholder="Search..."
                 Text="{Binding Filter,Mode=TwoWay}"
                 SearchCommand="{Binding SearchCommand}">
 
             </SearchBar>
-            <ListView
+            <ListView                
                 BackgroundColor="Silver"
                 HasUnevenRows="True"          
                 IsPullToRefreshEnabled="True"
@@ -32,6 +33,10 @@
                                 CornerRadius="20"
                                 HasShadow="True"
                                 Margin="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectLandCommand}">
+                                    </TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"></ColumnDefinition>

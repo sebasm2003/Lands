@@ -21,7 +21,7 @@
 
         #region Attributes
      
-        private ObservableCollection<Land> _lands;
+        private ObservableCollection<LandItemViewModel> _lands;
         private List<Land> _landsList;
         private string _filter;
 
@@ -40,7 +40,7 @@
             }
         }
 
-        public ObservableCollection<Land> Lands
+        public ObservableCollection<LandItemViewModel> Lands
         {
             get { return this._lands; }
             set { SetValue(ref this._lands, value); }
@@ -97,7 +97,7 @@
             }
 
             this._landsList = (List<Land>)response.Result;
-            this.Lands = new ObservableCollection<Land>(this._landsList);
+            this.Lands = new ObservableCollection<LandItemViewModel>(this.ToLandItemViewModel());
             this.IsRefreshing = false;           
 
         }
@@ -123,18 +123,56 @@
             }
         }
 
+
+
+        #endregion
+
+        #region Methods
+
         private void Search()
         {
             if (string.IsNullOrEmpty(this.Filter))
             {
-                this.Lands = new ObservableCollection<Land>(this._landsList);
+                this.Lands = new ObservableCollection<LandItemViewModel>(this.ToLandItemViewModel());
             }
             else
             {
-                this.Lands = new ObservableCollection<Land>(
-                    this._landsList.Where(x=> x.Name.ToLower().Contains(this.Filter.ToLower())
+                this.Lands = new ObservableCollection<LandItemViewModel>(
+                    this.ToLandItemViewModel().Where(x => x.Name.ToLower().Contains(this.Filter.ToLower())
                     || x.Capital.ToLower().Contains(this.Filter.ToLower())));
             }
+        }
+
+        private IEnumerable<LandItemViewModel> ToLandItemViewModel()
+        {
+            return this._landsList.Select(x => new LandItemViewModel
+            {
+                Alpha2Code = x.Alpha2Code,
+                Alpha3Code = x.Alpha3Code,
+                AltSpellings = x.AltSpellings,
+                Area = x.Area,
+                Borders = x.Borders,
+                CallingCodes = x.CallingCodes,
+                Capital = x.Capital,
+                Cioc = x.Cioc,
+                Currencies = x.Currencies,
+                Demonym = x.Demonym,
+                Flag = x.Flag,
+                Gini = x.Gini,
+                Languages = x.Languages,
+                LatitudeLongitude = x.LatitudeLongitude,
+                Name = x.Name,
+                NativeName = x.NativeName,
+                NumericCode = x.NumericCode,
+                Population = x.Population,
+                Region = x.Region,
+                RegionalBlocs = x.RegionalBlocs,
+                Subregion = x.Subregion,
+                Timezones = x.Timezones,
+                TopLevelDomain = x.TopLevelDomain,
+                Translations = x.Translations
+                
+            }).ToList();
         }
 
         #endregion

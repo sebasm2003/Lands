@@ -107,10 +107,20 @@
                     VerticalOptions="EndAndExpand">
                     <Image 
                         WidthRequest="100"
-                        Source="facebook_logo"></Image>
+                        Source="facebook_logo">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginFacebookCommand}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
                     <Image 
                         WidthRequest="57"
-                        Source="twitter_logo2"></Image>
+                        Source="twitter_logo2">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginTwitterCommand}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
             </StackLayout>
         </ScrollView>
